@@ -1,5 +1,6 @@
 package com.opf.project.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("api")
+@CrossOrigin(origins = "*")
 public class RESTController {
     /**
      * It gets the details of the project
@@ -33,7 +35,7 @@ public class RESTController {
         details.put("current_datetime", time.toString());
 
         // put "The GitHub url" into the record
-        details.put("github_url", "https://github.com/Oluwafisayomi-P-Folaranmi/hng-stage-0x01.git");
+        details.put("github_url", "https://github.com/Oluwafisayomi-P-Folaranmi/hng-task-0-0x02.git");
 
         return details;
     }
