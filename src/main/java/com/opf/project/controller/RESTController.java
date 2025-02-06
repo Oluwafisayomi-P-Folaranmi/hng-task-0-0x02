@@ -4,8 +4,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.Clock;
-import java.time.ZonedDateTime;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,9 +28,8 @@ public class RESTController {
         details.put("email", "folaranmifisayo@gmail.com");
 
         // put "The current datetime" into the record
-        Clock clock = Clock.systemUTC();
-        ZonedDateTime time = ZonedDateTime.now(clock);
-        details.put("current_datetime", time.toString());
+        String dateTime = DateTimeFormatter.ISO_INSTANT.format(Instant.now());
+        details.put("current_datetime", dateTime);
 
         // put "The GitHub url" into the record
         details.put("github_url", "https://github.com/Oluwafisayomi-P-Folaranmi/hngx-stage0-project-details.git");
