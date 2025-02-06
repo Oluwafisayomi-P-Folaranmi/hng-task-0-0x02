@@ -1,5 +1,8 @@
 package com.opf.project.controller;
 
+import com.opf.project.service.GetResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +22,7 @@ public class RESTController {
      * + The GitHub URL of the project
      * @return details
      */
-    @GetMapping("/")
+    @GetMapping("/get/myDetails")
     public Map<String, String> getProjectDetails() {
         // A record to hold the details
         Map<String, String> details = new HashMap<>();
@@ -35,5 +38,16 @@ public class RESTController {
         details.put("github_url", "https://github.com/Oluwafisayomi-P-Folaranmi/hngx-stage0-project-details.git");
 
         return details;
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<GetResponse> getMyDetails() {
+        GetResponse getResponse = new GetResponse(
+                "folaranmifisayo@gmail.com",
+                DateTimeFormatter.ISO_INSTANT.format(Instant.now()),
+                "https://github.com/Oluwafisayomi-P-Folaranmi/hngx-stage0-project-details.git");
+
+        System.out.println(getResponse);
+        return new ResponseEntity<>(getResponse, HttpStatus.OK);
     }
 }
